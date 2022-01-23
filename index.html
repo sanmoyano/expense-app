@@ -9,10 +9,11 @@
 </head>
 <body>
     <main class="container">
-        <h1>Gastos</h1>
+        <h1>Gastos del mes $$$</h1>
         <div class="search">
             <form action="">
-                <input type="text" placeholder="Agregar gasto...">
+                <input class="input-monto" type="number" placeholder="Agregar monto...">
+                <input class="input-text" type="text" placeholder="Descripcion...">
                 <button class="btn-add"> + </button>
             </form>
         </div>
@@ -22,7 +23,13 @@
             </ul>
         </div>
         <div class="empty">
-            <p>No tienes gastos aun</p>
+            <p>No tenés gastos aun.</p>
+        </div>
+        <div class="total-gastos">
+            <!-- aca aparece el total  -->
+        </div>
+        <div class="vaciar-gastos">
+            <button class="btn-empty">Eliminar todo</button>
         </div>
     </main>
     <script src="./script.js"></script>
