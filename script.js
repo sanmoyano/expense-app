@@ -1,11 +1,14 @@
+
 //Variables
 let inputMonto = document.querySelector(".input-monto");
 let inputText = document.querySelector(".input-text");
 let addBtn = document.querySelector(".btn-add");
 let ul = document.querySelector("ul");
+let li = document.querySelector(".li-gastos-container")
 let empty = document.querySelector(".empty");
 let emptyBtn = document.querySelector(".btn-empty");
-let totalGastos = document.querySelector (".total-gastos")
+let totalGastos = document.querySelector (".total-gastos");
+let formulario = document.querySelector("#formGastos");
 
 //array de los montos
 let gastos = [];
@@ -13,6 +16,8 @@ let gastos = [];
 //agregar evento al boton de agregar gastos 
 addBtn.addEventListener('click', (e) => {
     e.preventDefault();
+
+    
     let monto = parseInt(inputMonto.value); //capturo el valor y lo convierto en numero
     let description = inputText.value;
 
@@ -72,7 +77,13 @@ function deleteBtn () {
     deleteButton.className = "btn-delete";
 
     deleteButton.addEventListener('click', (e) => {
-        console.log("Borra esto")
+        let itemGasto = e.target.parentElement; //meto el elemento del DOM en una variable
+        ul.removeChild(itemGasto);//lo elimino del DOM
+
+        let arrayLocal = JSON.parse(localStorage.getItem('montos'))
+        console.log(arrayLocal)
+
     });
     return deleteButton;
 };
+
