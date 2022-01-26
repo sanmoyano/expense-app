@@ -8,6 +8,7 @@ class Gasto {
     };
 };
 
+//Variables
 let gastos = [];
 let mapGastos = [];
 let formulario = document.querySelector("#form-gastos");
@@ -16,6 +17,8 @@ let empty = document.querySelector(".empty");
 let emptyBtn = document.querySelector(".btn-empty");
 let totalGastos = document.querySelector(".total-gastos")
 
+//EVENTOS
+//cargar datos al formulario
 formulario.addEventListener('submit', (e) => {
     e.preventDefault();
 
@@ -28,17 +31,15 @@ formulario.addEventListener('submit', (e) => {
 
     cargarGastosDom ();
     mostrarTotal ();
-
 });
 
-//EVENTOS
 //eliminar historial
 emptyBtn.addEventListener('click', () => {
     localStorage.clear('gastos');
     divGastos.innerHTML = "";
     totalGastos.innerHTML = "";
     empty.style.display = "block";
-})
+});
 
 //FUNCIONES
 //cargar gastos al dom
@@ -69,7 +70,7 @@ function cargarGastosDom () {
     };
 
     //eliminar gastos individuales
-    gastosParseados.forEach((gasto, indice) => {
+    gastosParseados.forEach((indice) => {
         document.getElementById(`boton ${indice + 1}`).addEventListener('click', () => {
             divGastos.removeChild(document.getElementById(`gastos ${indice +1}`));//elimina la tarea del dom
             gastos.splice(indice, 1); //elimina la tarea del array
@@ -80,9 +81,9 @@ function cargarGastosDom () {
         
             mostrarTotal();
         });
-    })
+    });
     
-}
+};
 
 //mostrar total en DOM 
 function mostrarTotal () {
@@ -90,12 +91,12 @@ function mostrarTotal () {
     totalGastos.innerHTML += `
         <h3 class="total"> Total: $${sumarMontos()}</h3> 
     `
-}
+};
 
 //sumar montos de los objetos
 function sumarMontos () {
     let montosArray = JSON.parse(localStorage.getItem('montos'));
     let suma = (valor1, valor2) => valor1 + valor2
     return montosArray.reduce(suma)
-}
+};
 
