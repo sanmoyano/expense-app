@@ -47,29 +47,25 @@ form {
 
 input {
     padding: 15px 10px;
-    margin: 10px;
+    margin: 10px 0px;
     outline: none;
-    width: 90%;
-}
-
-.li-container {
-    background-color: white;
     width: 100%;
-    color: darkslategray;
-    margin-top: 20px;
 }
-
 ul {
-    padding: 0;
+    display: flex;
+    flex-direction: column;
+    margin-right: 10px;
 }
 
 li {
+    display: flex;
+    flex-direction: row;
     margin: 0px 10px;
     list-style: none;
     background-color: lightgray;
     border-radius: 5px;
-    margin-top: 15px;
-    display: flex;
+    width: 100%;
+    margin: 5px 0px;
 }
 
 li p {
@@ -78,6 +74,9 @@ li p {
     margin: 0;
     padding: 15px;
     width: 100%;
+}
+p{
+    color: #0d0d0d;
 }
 
 .btn-delete {
@@ -101,7 +100,7 @@ li p {
 
 .btn-add {
     padding: 5px 15px;
-    margin: 0px 10px;
+    margin-bottom: 10px;
     border: none;
     color: whitesmoke;
     font-family: fantasy;
@@ -109,11 +108,23 @@ li p {
     font-size: 3rem;
     outline: none;
     border-radius: 5px;
+    width: 100%;
 }
 
 .btn-empty {
-    margin: 10px 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     display: none;
+    margin-top: 10px;
+    width: 100%;
+    height: 50px;
+    border: none;
+    color: whitesmoke;
+    background-color: black;
+    font-size: 2rem;
+    outline: none;
+    border-radius: 5px;
 }
 
 .btn-add:hover {
@@ -130,3 +141,4 @@ li p {
     color: #0d0d0d;
     margin: 30px 10px;
 }
+
