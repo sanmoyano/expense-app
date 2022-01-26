@@ -1,3 +1,4 @@
+//OBJETO
 class Gasto {
     constructor(monto, nombre) {
         this.monto = monto;
@@ -8,14 +9,14 @@ class Gasto {
     };
 };
 
-//Variables
+//VARIABLES
 let gastos = [];
 let mapGastos = [];
 let formulario = document.querySelector("#form-gastos");
 let divGastos = document.querySelector(".li-gastos-container");
 let empty = document.querySelector(".empty");
 let emptyBtn = document.querySelector(".btn-empty");
-let totalGastos = document.querySelector(".total-gastos")
+let totalGastos = document.querySelector(".total-gastos");
 
 //EVENTOS
 //cargar datos al formulario
@@ -64,9 +65,9 @@ function cargarGastosDom () {
     //leer montos de los objetos
     if(gastosParseados !== "") {
         mapGastos = gastosParseados.map(gasto => {
-            return parseInt(gasto.monto);
+            return parseInt(gasto.monto);//creo un nuevo array con los montos 
         });
-        localStorage.setItem('montos', JSON.stringify(mapGastos));
+        localStorage.setItem('montos', JSON.stringify(mapGastos));//envio el array al LS
     };
 
     //eliminar gastos individuales
@@ -74,12 +75,12 @@ function cargarGastosDom () {
         document.getElementById(`boton ${indice + 1}`).addEventListener('click', () => {
             divGastos.removeChild(document.getElementById(`gastos ${indice +1}`));//elimina la tarea del dom
             gastos.splice(indice, 1); //elimina la tarea del array
-            localStorage.setItem('gastos', JSON.stringify(gastos));//actualiza el LS
+            localStorage.setItem('gastos', JSON.stringify(gastos));//actualiza el LS gastos
 
-            mapGastos.splice(indice, 1);
-            localStorage.setItem('montos', JSON.stringify(mapGastos));
+            mapGastos.splice(indice, 1);//elimino el monto del array
+            localStorage.setItem('montos', JSON.stringify(mapGastos));//actualizo el LS montos
         
-            mostrarTotal();
+            mostrarTotal();//actualizo el total
         });
     });
     
@@ -100,3 +101,4 @@ function sumarMontos () {
     return montosArray.reduce(suma)
 };
 
+// falta recargar items cuando cierro la ventana
