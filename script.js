@@ -9,6 +9,7 @@ class Gasto {
 };
 
 let gastos = [];
+let mapGastos = [];
 let formulario = document.querySelector("#form-gastos");
 let divGastos = document.querySelector(".li-gastos-container");
 let empty = document.querySelector(".empty");
@@ -25,7 +26,7 @@ formulario.addEventListener('submit', (e) => {
     localStorage.setItem('gastos', JSON.stringify(gastos));//array al LS
     formulario.reset();
 
-    cargarGastosDom();
+    cargarGastosDom ();
     mostrarTotal ();
 
 });
@@ -58,19 +59,43 @@ function cargarGastosDom () {
         empty.style.display = "none";
         emptyBtn.style.display = "flex";
     };
-    
+
+    //leer montos de los objetos
+    if(gastosParseados !== "") {
+        mapGastos = gastosParseados.map(gasto => {
+            return parseInt(gasto.monto);
+        });
+        localStorage.setItem('montos', JSON.stringify(mapGastos));
+    };
+
     //eliminar gastos individuales
     gastosParseados.forEach((gasto, indice) => {
         document.getElementById(`boton ${indice + 1}`).addEventListener('click', () => {
-            divGastos.removeChild(document.getElementById(`gastos ${indice +1}`))
-        })
+            divGastos.removeChild(document.getElementById(`gastos ${indice +1}`));//elimina la tarea del dom
+            gastos.splice(indice, 1); //elimina la tarea del array
+            localStorage.setItem('gastos', JSON.stringify(gastos));//actualiza el LS
+
+            mapGastos.splice(indice, 1);
+            localStorage.setItem('montos', JSON.stringify(mapGastos));
+        
+            mostrarTotal();
+        });
     })
+    
 }
 
 //mostrar total en DOM 
 function mostrarTotal () {
     totalGastos.innerHTML = "";
     totalGastos.innerHTML += `
-        <h3 class="total"> Total: $$$ </h3> 
+        <h3 class="total"> Total: $${sumarMontos()}</h3> 
     `
 }
+
+//sumar montos de los objetos
+function sumarMontos () {
+    let montosArray = JSON.parse(localStorage.getItem('montos'));
+    let suma = (valor1, valor2) => valor1 + valor2
+    return montosArray.reduce(suma)
+}
+
