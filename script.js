@@ -70,7 +70,7 @@ function cargarGastosDom () {
     };
 
     //eliminar gastos individuales
-    gastosParseados.forEach((indice) => {
+    gastosParseados.forEach((gasto, indice) => {
         document.getElementById(`boton ${indice + 1}`).addEventListener('click', () => {
             divGastos.removeChild(document.getElementById(`gastos ${indice +1}`));//elimina la tarea del dom
             gastos.splice(indice, 1); //elimina la tarea del array
