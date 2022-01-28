@@ -37,6 +37,7 @@ formulario.addEventListener('submit', (e) => {
 //eliminar historial
 emptyBtn.addEventListener('click', () => {
     localStorage.clear('gastos');
+    localStorage.clear('montos');
     divGastos.innerHTML = "";
     totalGastos.innerHTML = "";
     empty.style.display = "block";
@@ -102,3 +103,5 @@ function sumarMontos () {
 };
 
 // falta recargar items cuando cierro la ventana
+cargarGastosDom ();
+mostrarTotal();
