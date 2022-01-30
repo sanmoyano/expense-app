@@ -57,7 +57,7 @@ function cargarGastosDom () {
                 <li id="gastos ${indice + 1}" class="li-gastos-row"> 
                         <p> $${gasto.monto} </p>
                         <p> ${gasto.nombre} </p>
-                        <button class="btn-delete" id="boton ${indice + 1}"> X </button>
+                        <button class="btn-delete" id="boton ${indice + 1}">&#9940</button>
                     </div>
                 </li>
             `
@@ -94,7 +94,7 @@ function cargarGastosDom () {
 function mostrarTotal () {
     totalGastos.innerHTML = "";
     totalGastos.innerHTML += `
-        <h3 class="total"> Total: $${sumarMontos()}</h3> 
+        <h3 class="total"> TOTAL: $${sumarMontos()}</h3> 
     `
 };
 

@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
 
 * {
     margin: 0px;
@@ -7,11 +8,12 @@
 
 html {
     font-size: 62.5%;
+    font-family: 'Roboto Mono', monospace;
 }
 
 body {
     font-size: 1.6rem;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Roboto Mono', monospace;
     line-height: 1.5;
     background-color: #0d0d0d;
     color: whitesmoke;
@@ -20,7 +22,7 @@ body {
 h1 {
     text-align: center;
     color: #0d0d0d;
-    font-size: 2rem;
+    font-size: 1.7rem;
 }  
 .container {
     display: flex;
@@ -86,10 +88,11 @@ p{
     font-weight: bold;
     padding: 5px 10px;
     outline: none;
-    width: 15%;
+    width: 25%;
     font-size: 2rem;
     border-bottom-right-radius: 5px;
     border-top-right-radius: 5px;
+    font-family: 'Roboto Mono', monospace;
 }
 
 
@@ -103,9 +106,9 @@ p{
     margin-bottom: 10px;
     border: none;
     color: whitesmoke;
-    font-family: fantasy;
+    font-family: 'Roboto Mono', monospace;
     background-color: green;
-    font-size: 3rem;
+    font-size: 2rem;
     outline: none;
     border-radius: 5px;
     width: 100%;
@@ -122,9 +125,10 @@ p{
     border: none;
     color: whitesmoke;
     background-color: black;
-    font-size: 2rem;
+    font-size: 1.6rem;
     outline: none;
     border-radius: 5px;
+    font-family: 'Roboto Mono', monospace;
 }
 
 .btn-add:hover {
@@ -134,14 +138,11 @@ p{
 
 .empty {
     margin: 10px;
-    color: darkslategrey;
+    color: #0d0d0d;
+    font-weight: 700;
 }
 
 .total {
     color: #0d0d0d;
     margin: 30px 10px;
-}
-
-.nota {
-    font-size: 1rem;
 }
