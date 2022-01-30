@@ -29,7 +29,7 @@ formulario.addEventListener('submit', (e) => {
 
     localStorage.setItem('gastos', JSON.stringify(gastos));//array al LS
     formulario.reset();
-    console.log(gastos)
+    // console.log(gastos)
 
     mostrarTotal ();
 });
@@ -61,7 +61,7 @@ function cargarGastosDom () {
         });
         empty.style.display = "none";
         emptyBtn.style.display = "flex";
-    };
+    }
 
     //leer montos de los objetos
     if(gastosParseados !== "") {
@@ -102,6 +102,20 @@ function sumarMontos () {
     return montosArray.reduce(suma)
 };
 
+function reloadLocal () {
+    let gastosLocal = localStorage.getItem('gastos')
+    console.log(gastosLocal)
+    if(gastosLocal == null) {
+        gastos = [];
+    } else {
+        gastos = JSON.parse(gastosLocal);
+    }
+    console.log(gastos)
+    return gastos; 
+}
+reloadLocal(gastos);
+
 // falta recargar items cuando cierro la ventana
 cargarGastosDom ();
 mostrarTotal();
+
