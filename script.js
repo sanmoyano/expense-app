@@ -18,10 +18,12 @@ let empty = document.querySelector(".empty");
 let emptyBtn = document.querySelector(".btn-empty");
 let totalGastos = document.querySelector(".total-gastos");
 
+
 //EVENTOS
 //cargar datos al formulario
 formulario.addEventListener('submit', (e) => {
     e.preventDefault();
+    reloadLocal();
 
     let datForm = new FormData(e.target);//e.target accedo al formulario
     let gasto = new Gasto (datForm.get('monto'), datForm.get('nombre'));//creo el objeto con las propiedades de la clase
@@ -31,6 +33,7 @@ formulario.addEventListener('submit', (e) => {
     formulario.reset();
     // console.log(gastos)
 
+    cargarGastosDom();
     mostrarTotal ();
 });
 
@@ -113,9 +116,6 @@ function reloadLocal () {
     console.log(gastos)
     return gastos; 
 }
-reloadLocal(gastos);
-
-// falta recargar items cuando cierro la ventana
 cargarGastosDom ();
 mostrarTotal();
 
