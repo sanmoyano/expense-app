@@ -31,7 +31,6 @@ formulario.addEventListener('submit', (e) => {
     formulario.reset();
     console.log(gastos)
 
-    cargarGastosDom ();
     mostrarTotal ();
 });
 
@@ -62,9 +61,7 @@ function cargarGastosDom () {
         });
         empty.style.display = "none";
         emptyBtn.style.display = "flex";
-    } else {
-
-    }
+    };
 
     //leer montos de los objetos
     if(gastosParseados !== "") {
