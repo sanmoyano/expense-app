@@ -1,3 +1,4 @@
+//OBJETO
 class Gasto {
     constructor(monto, nombre) {
         this.monto = monto;
@@ -8,14 +9,17 @@ class Gasto {
     };
 };
 
+//VARIABLES
 let gastos = [];
 let mapGastos = [];
 let formulario = document.querySelector("#form-gastos");
 let divGastos = document.querySelector(".li-gastos-container");
 let empty = document.querySelector(".empty");
 let emptyBtn = document.querySelector(".btn-empty");
-let totalGastos = document.querySelector(".total-gastos")
+let totalGastos = document.querySelector(".total-gastos");
 
+//EVENTOS
+//cargar datos al formulario
 formulario.addEventListener('submit', (e) => {
     e.preventDefault();
 
@@ -25,20 +29,20 @@ formulario.addEventListener('submit', (e) => {
 
     localStorage.setItem('gastos', JSON.stringify(gastos));//array al LS
     formulario.reset();
+    console.log(gastos)
 
     cargarGastosDom ();
     mostrarTotal ();
-
 });
 
-//EVENTOS
 //eliminar historial
 emptyBtn.addEventListener('click', () => {
     localStorage.clear('gastos');
+    localStorage.clear('montos');
     divGastos.innerHTML = "";
     totalGastos.innerHTML = "";
     empty.style.display = "block";
-})
+});
 
 //FUNCIONES
 //cargar gastos al dom
@@ -58,14 +62,14 @@ function cargarGastosDom () {
         });
         empty.style.display = "none";
         emptyBtn.style.display = "flex";
-    };
+    }
 
     //leer montos de los objetos
     if(gastosParseados !== "") {
         mapGastos = gastosParseados.map(gasto => {
-            return parseInt(gasto.monto);
+            return parseInt(gasto.monto);//creo un nuevo array con los montos 
         });
-        localStorage.setItem('montos', JSON.stringify(mapGastos));
+        localStorage.setItem('montos', JSON.stringify(mapGastos));//envio el array al LS
     };
 
     //eliminar gastos individuales
@@ -73,16 +77,16 @@ function cargarGastosDom () {
         document.getElementById(`boton ${indice + 1}`).addEventListener('click', () => {
             divGastos.removeChild(document.getElementById(`gastos ${indice +1}`));//elimina la tarea del dom
             gastos.splice(indice, 1); //elimina la tarea del array
-            localStorage.setItem('gastos', JSON.stringify(gastos));//actualiza el LS
+            localStorage.setItem('gastos', JSON.stringify(gastos));//actualiza el LS gastos
 
-            mapGastos.splice(indice, 1);
-            localStorage.setItem('montos', JSON.stringify(mapGastos));
+            mapGastos.splice(indice, 1);//elimino el monto del array
+            localStorage.setItem('montos', JSON.stringify(mapGastos));//actualizo el LS montos
         
-            mostrarTotal();
+            mostrarTotal();//actualizo el total
         });
-    })
+    });
     
-}
+};
 
 //mostrar total en DOM 
 function mostrarTotal () {
@@ -90,12 +94,15 @@ function mostrarTotal () {
     totalGastos.innerHTML += `
         <h3 class="total"> Total: $${sumarMontos()}</h3> 
     `
-}
+};
 
 //sumar montos de los objetos
 function sumarMontos () {
     let montosArray = JSON.parse(localStorage.getItem('montos'));
     let suma = (valor1, valor2) => valor1 + valor2
     return montosArray.reduce(suma)
-}
+};
 
+// falta recargar items cuando cierro la ventana
+cargarGastosDom ();
+mostrarTotal();
