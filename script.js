@@ -55,7 +55,7 @@ function cargarGastosDom () {
         gastosParseados.forEach((gasto, indice) => {
             divGastos.innerHTML += `
                 <li id="gastos ${indice + 1}" class="li-gastos-row"> 
-                        <p> $${gasto.monto} </p>
+                        <p> &#128184 ${gasto.monto} </p>
                         <p> ${gasto.nombre} </p>
                         <button class="btn-delete" id="boton ${indice + 1}">&#9940</button>
                     </div>
