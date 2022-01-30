@@ -105,17 +105,19 @@ function sumarMontos () {
     return montosArray.reduce(suma)
 };
 
+//recargar elementos del LS
 function reloadLocal () {
-    let gastosLocal = localStorage.getItem('gastos')
+    let gastosLocal = localStorage.getItem('gastos') //obtengo los objetos del LS
     console.log(gastosLocal)
-    if(gastosLocal == null) {
-        gastos = [];
-    } else {
-        gastos = JSON.parse(gastosLocal);
+    if(gastosLocal == null) { //si no hay datos en el LS
+        gastos = []; //entonces es igual a datos vacios
+    } else { //si hay datos
+        gastos = JSON.parse(gastosLocal);//el array gastos es igual al array en LS
     }
-    console.log(gastos)
-    return gastos; 
+    // console.log(gastos)
+    return gastos; //retornar array gastos
 }
+
 cargarGastosDom ();
 mostrarTotal();
 
